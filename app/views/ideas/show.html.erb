@@ -1,0 +1,39 @@
+<%= @idea.title %> 
+
+<%= @idea.body %> 
+
+<%= link_to  "Edit", edit_idea_path(@idea) %> 
+
+<%= link_to  "Delete", idea_path(@idea), method: :delete %> 
+
+
+<br>
+<h3>New Review</h3>
+
+<%= form_with(model: [@idea, @review], local:true) do |f| %>
+<div class="">
+    <%= f.label :body %> 
+    <%= f.text_field(:body, class: '',)  %>
+</div>
+<%= f.submit "Submit", class: '' %> 
+<% end %>
+
+<br>
+<h3>Reviews</h3>
+<% @reviews.each do |review| %> 
+
+<p><%= review.body%> </p>
+<%= link_to  "Delete Review", review_path(review), method: :delete %>
+
+<% end %> 
+
+
+
+
+
+
+
+
+
+
+

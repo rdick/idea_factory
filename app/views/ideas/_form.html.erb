@@ -1,0 +1,18 @@
+<% if @idea.errors.present? %> 
+<p>
+    <%= @idea.errors.full_messages.join(', ') %>
+</p>
+ <% end %>
+
+ <%= form_with model: @idea, local:true do |f| %>
+ <div class="">
+    <%= f.label :title %> 
+    <%= f.text_field(:title, class: '',)  %>
+</div>
+<br>
+<div class="">
+    <%= f.label :body %> 
+    <%= f.text_field(:body, class: '',)  %>
+</div>
+<%= f.submit "Submit", class: '' %> 
+<% end %>

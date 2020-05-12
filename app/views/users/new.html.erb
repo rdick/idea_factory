@@ -1,0 +1,21 @@
+<h1>Create New User</h1>
+
+<%= form_with model: @user, local: true do |f| %> 
+
+<div class="">
+    <%= f.label :name %> 
+    <%= f.text_area(:name, class: '') %> 
+</div>
+
+<div class="">
+    <%= f.label :email %> 
+    <%= f.text_area(:email, class: '') %> 
+</div>
+
+<div class="">
+    <%= f.label :password %> 
+    <%= f.text_area(:password, class: '') %> 
+</div>
+<%= f.submit 'Login', class: '' %> 
+
+<% end %> 

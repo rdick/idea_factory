@@ -1,0 +1,22 @@
+
+<div>
+<% @ideas.each do |idea| %> 
+    <%= link_to idea do %>
+        <p><strong> <%= idea.title %> <%= idea.id %>  </strong></p>
+    <% end %> 
+    <p><%= idea.body %> </p>
+    <div>
+        By: <%= idea.user.name %> 
+        <% if idea.likes.find_by(user: current_user).present? %> 
+            <%= link_to  "Unlike", like_path(idea), method: :delete %>
+
+        <% else %>
+            <%= link_to  "Like", idea_likes_path(idea), method: :post %>
+        <% end %> 
+        
+    <p>Likes: <%= idea.likes.count %> </p>
+    </div>
+    <br>
+    <br>
+<% end %> 
+</div>
