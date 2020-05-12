@@ -1,22 +1,38 @@
 
 <div>
 <% @ideas.each do |idea| %> 
-    <%= link_to idea do %>
-        <p><strong> <%= idea.title %> <%= idea.id %>  </strong></p>
-    <% end %> 
-    <p><%= idea.body %> </p>
-    <div>
-        By: <%= idea.user.name %> 
-        <% if idea.likes.find_by(user: current_user).present? %> 
-            <%= link_to  "Unlike", like_path(idea), method: :delete %>
 
-        <% else %>
-            <%= link_to  "Like", idea_likes_path(idea), method: :post %>
+<div style="margin: 0px 5% 0 5%">
+    <hr>
+    <div>
+        <%= link_to idea do %>
+            <p><strong> <%= idea.title %> <%= idea.id %> </strong></p>
         <% end %> 
-        
-    <p>Likes: <%= idea.likes.count %> </p>
     </div>
-    <br>
-    <br>
+    <div>
+        <p><%= idea.body %> </p>
+    </div>
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+        <div style="display: flex; justifty-content: space-between; width: 50%">
+            <div style="padding: 7px 23px 0 5px">
+                <p style="text-decoration: underline; color: blue;">By: <%= idea.user.name %> </p>
+            </div>
+            <div style="padding-right: 23px">
+                <button> Join </button>
+            </div>
+            <div style="padding-right: 23px">
+                <% if idea.likes.find_by(user: current_user).present? %> 
+                   <button> <%= link_to  "Unlike", like_path(idea), method: :delete, style: "color: black" %> </button>
+                <% else %>
+                   <button> <%= link_to  "Like", idea_likes_path(idea), method: :post, style: "color: black" %> </button>
+                <% end %> 
+            </div>
+           
+        </div>
+        <div style="margin-top: 7px">
+            <p>Members: 0 | Likes: <%= idea.likes.count %> </p>
+        </div>
+    </div>
+</div>
 <% end %> 
 </div>

@@ -10,18 +10,28 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to  "Idea Factory", ideas_path %>
-      <% if user_signed_in? %> 
-      <%= link_to  "Sign Out", session_path, method: :delete %>
-      <p>Hello <%= current_user.name.capitalize %> </p>
-      <% else %>
-      <%= link_to  "Create New User", new_user_path %>
-      <%= link_to  "Sign In", new_session_path%>
-      <% end %>  
-      <%= link_to  "New Idea", new_idea_path %>
+    <div style="display: flex; margin: 0% 5% 0% 5%; padding-top: 2%">
+      <div style="display: flex; flex-direction: column">
+        <p style="width: 90px; height: 90px; border: solid 1px black; border-radius: 25px"></p>
+        <%= link_to  "Idea Factory", ideas_path %>
+      </div>
+      <div style="display: flex; justify-content: flex-end; width: 93%">
+        <div style="display: flex; flex-direction: column; width: 100%">
+          <div style="width:100%; display: flex; justify-content: flex-end">
+            <% if user_signed_in? %> 
+              <h5 style="padding-right: 50px; color: blue">Hello <%= current_user.name.capitalize %></h5>
+              <h5><%= link_to  "Sign Out", session_path, method: :delete %></h5>
+            <% else %>
+              <h5><%= link_to  "Create New User", new_user_path, style: "padding-right: 23px" %></h5>
+              <h5><%= link_to  "Sign In", new_session_path%></h5>
+            <% end %>  
+          </div>
+          <div style="width:100%; display: flex; justify-content: flex-end; padding-top: 20px">
+            <button style="height: 30px; width: 150px"><%= link_to  "New Idea", new_idea_path %> </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <br>
      <% flash.each do |type, message| %>
     <div class='bg-<%= type %> p-3 rounded mb-2 shadow-sm'>
         <%= message %>
