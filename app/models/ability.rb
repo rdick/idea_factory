@@ -10,7 +10,7 @@ class Ability
     end
 
     can(:crud, Review) do |review|
-      comment.user == user
+      review.user == user
     end
     
   end

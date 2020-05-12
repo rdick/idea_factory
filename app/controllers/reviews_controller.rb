@@ -18,6 +18,9 @@ class ReviewsController < ApplicationController
         if can?(:crud, review)
             review.destroy
             redirect_to idea_path(review.idea)
+        else
+            flash[:danger] = "Cannot Delete Other Reviews"
+            redirect_to idea_path(review.idea)
         end
     end
 end
